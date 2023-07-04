@@ -619,6 +619,7 @@ jobs:
             signed-apk/rustdesk-${{ env.VERSION }}-${{ matrix.job.arch }}.apk
 
   build-rustdesk-lib-linux-amd64:
+    if: false # DISABLED
     needs: [generate-bridge-linux, build-vcpkg-deps-linux]
     name: build-rust-lib ${{ matrix.job.target }} (${{ matrix.job.os }}) [${{ matrix.job.extra-build-features }}]
     runs-on: ${{ matrix.job.os }}
@@ -1122,13 +1123,13 @@ jobs:
               use-cross: true,
               extra-build-features: "",
             }
-          - {
-              arch: aarch64,
-              target: aarch64-unknown-linux-gnu,
-              os: ubuntu-18.04, # just for naming package, not running host
-              use-cross: true,
-              extra-build-features: "appimage",
-            }
+#           - {
+#               arch: aarch64,
+#               target: aarch64-unknown-linux-gnu,
+#               os: ubuntu-18.04, # just for naming package, not running host
+#               use-cross: true,
+#               extra-build-features: "appimage",
+#             }
           # - {
           #     arch: aarch64,
           #     target: aarch64-unknown-linux-gnu,
@@ -1370,6 +1371,7 @@ jobs:
 #             /opt/artifacts/rpm/*.rpm
 
   build-rustdesk-linux-amd64:
+    if: false # DISABLED
     needs: [build-rustdesk-lib-linux-amd64]
     name: build-rustdesk ${{ matrix.job.target }} (${{ matrix.job.os }}) [${{ matrix.job.extra-build-features }}]
     runs-on: ubuntu-20.04
