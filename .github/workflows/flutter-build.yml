@@ -7,6 +7,9 @@ on:
         type: boolean
         default: true
 
+permissions:
+   contents: write
+   
 env:
   CARGO_NDK_VERSION: "3.1.2"
   LLVM_VERSION: "15.0.6"
